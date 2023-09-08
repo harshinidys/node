@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node
+  # namespace: default   # Corrected indentation and specified the namespace here
+labels:
+  app: orm_mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orm_mongodb
+  template:
+    metadata:
+      labels:
+        app: orm_mongodb
+    spec:
+      containers:
+      - name: second
+        image: harshinirs/second:new
+        ports:
+        - containerPort: 4006
